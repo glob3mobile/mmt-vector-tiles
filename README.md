@@ -2,14 +2,15 @@ mmt-vector-tiles
 ================
 
 ##A Tile-Vector library.
--------------------------------------------------------------------------------
+---
 This library allows to create standard GeoJSON libraries using open source libraries that could be used to render huge vectorial data set in the same way than the raster pyramids.
 
 
 
 
--------------------------------------------------------------------------------
-DESCRIPTION:
+
+##DESCRIPTION:
+---
 
 The purpose of this tool is the generation of a complete pyramid for the target vectorial data, in order to be used for the Level Of Detail (LOD) management on Glob3 mobile virtual globe. Full pyramid of vectorial data shall be generated in geojson and/or geobson format.
 
