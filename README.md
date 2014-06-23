@@ -3,10 +3,10 @@ mmt-vector-tiles
 
 ##A Tile-Vector library.
 ================
-+ This library allows to ++create++ standard ++GeoJSON vector tiles pyramids++ using ++open source libraries++ that could be used to render ++huge vectorial data sets++ in the same way than raster pyramids.
++ This library allows to **create** standard **GeoJSON vector tiles pyramids** using **open source libraries** that could be used to render **huge vectorial data sets** in the same way than raster pyramids.
 + Mobile Map Technology has direct support for this pyramids (MMT-VL working on MMT). 
 + Open Layers 3 also support the pyramids (MMT-VL working on OL3)
-+ The pyramid is a ++static files dataset++ that can be used on ++any webserver++ (Apache, nginx, ...) or can be diseminated in a CDN.
++ The pyramid is a **static files dataset** that can be used on **any webserver** (Apache, nginx, ...) or can be diseminated in a CDN.
 
 
 
