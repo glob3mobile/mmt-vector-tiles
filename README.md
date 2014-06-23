@@ -21,7 +21,7 @@ MMT-Vector-Tiles
 5. Run the process
 6. Copy your pyramid in an accesible web server
 7. Use your vector tiles layer
-*<a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/mmt-layer.java">MMT example </a>
+--*<a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/mmt-layer.java">MMT example </a>
 *<a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/index.html"> Open Layers 3 Example  </a>
 
 
@@ -31,9 +31,7 @@ MMT Vector-tiles is released under a 2 [clauses BSD license](https://github.com/
 
 
 
-
-
-##DESCRIPTION:
+##Description
 ================
 
 The purpose of this tool is the generation of a complete pyramid for the target vectorial data, in order to be used for the Level Of Detail (LOD) management on Glob3 mobile virtual globe. Full pyramid of vectorial data shall be generated in geojson and/or geobson format.
@@ -55,8 +53,9 @@ Resultant data are structured in foders as follows:
 
 - Non file shall be generated for empty tiles.
 
--------------------------------------------------------------------------------
-REQUIREMENTS:
+
+##Requirements
+================
 
 * The tool works as runnable jar, so java jre/jdk must be installed on the system (java version 1.6_x or superior)
 * The tool asumme the use of a postgreSQL/postgis data base containing vectorial data. The following versions are necessary:
