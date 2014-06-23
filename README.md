@@ -1,4 +1,4 @@
-mmt-vector-tiles
+MMT-Vector-Tiles
 ================
 
 ##A Tile-Vector generation library.
@@ -12,10 +12,11 @@ mmt-vector-tiles
 
 ![Architechture] (https://dl.dropboxusercontent.com/u/20446978/wiki-github/mmt-vector-tiles.jpg)
 
+##Workflow
+=======
 
 
-
-License
+##License
 =======
 MMT Vector-tiles is released under a 2 [clauses BSD license](https://github.com/glob3mobile/g3m/blob/purgatory/LICENSE.txt) Except for the Blender plugin exporter which is available under the GPL 2.0 License.:
 
