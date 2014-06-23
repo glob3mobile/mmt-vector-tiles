@@ -57,9 +57,8 @@ Resultant data are structured in foders as follows:
 ##Requirements
 ================
 
-* The tool works as runnable jar, so java jre/jdk must be installed on the system (java version 1.6_x or superior)
-* The tool asumme the use of a postgreSQL/postgis data base containing vectorial data. The following versions are necessary:
-	
+The tool works as runnable jar, so java jre/jdk must be installed on the system (java version 1.6_x or superior)
+The tool asumme the use of a postgreSQL/postgis data base containing vectorial data. The following versions are necessary
 - postgreSQL: 9.1 or superior
 - postgis: 1.5 or superior
 - pgAdmin: 1.18 or superior
@@ -97,24 +96,17 @@ This configuration file will include the following parameters (as tags in XML fo
 - replace_filtered: Geometry replacement allowed or not. (MULTI)LINE or (MULTI)POLYGON filtered during processing will be replaced by POINT in the output file. REPLACE_FILTERED == 0, means substitutions not allowed. REPLACE_FILTERED > 0, this number is the maximun number of substitutions per tile.
 
 ####Parameters for specific vectorial data:
-
 For any data source, the configuration file will include a tag with the followind data:
-
 - datasource: name of the table in the database with the target vectorial data
 - filter_criteria: filter criteria using pure database query format that will be included in a WHERE clause (for polygons and lines), or ORDER BY clause (for points). 
     i.e.1: "continent" like 'Euro%' AND "pop_est" > 10000000.
     i.e.2: ORDER BY "LABELRANK" DESC LIMIT 20
     If non filter criteria is used, value "true" will be used by default.
 - properties: list of fields/columns associated to the vectorial data that shall be included as feature properties in the resultant geojson/geobson file.
-
-
-
 ##Examples
 ==========
-
 Execution using parameters.xml default file, simply run the script:
 ./run.sh
-
 Execution using a specific user configuration file: my_parameters.xml, run the script with the command line parameter:
 ./run.sh my_parameters.xml
 
