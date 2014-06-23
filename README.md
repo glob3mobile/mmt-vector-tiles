@@ -1,13 +1,12 @@
 mmt-vector-tiles
 ================
 
-===============================================
-	VECTORIAL LOD GENERATION TOOL
-===============================================
+##A Tile-raster library.
 
-RELEASE:
-1.0 (2014/06/23)
-  - Support for multiple data sources
+This library allows to create standard GeoJSON libraries using open source libraries that could be used to render huge vectorial data set in the same way than the raster pyramids.
+
+
+
 
 -------------------------------------------------------------------------------
 DESCRIPTION:
