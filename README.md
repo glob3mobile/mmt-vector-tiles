@@ -14,15 +14,15 @@ MMT-Vector-Tiles
 
 ##Workflow
 =======
-+ Download the most recent release of MMT
-+ Install a Java Virtual Machine (if you don't have the JVM installed on your computer) 
-+ Import your vectorial datasources to postgis.
-+ Configure the parameters.xml file
-+ Run the proccess
-+ Copy your pyramid in an accesible web server
-+ Use your layer
-++ MMT example
-++ Open Layers 3 Example
+1. Download the most recent release of MMT (Release)
+2. Install a Java Virtual Machine (if you don't have the JVM installed on your computer) 
+3. Import your vectorial datasources to postgis.
+4. Configure the parameters.xml file
+5. Run the proccess
+6. Copy your pyramid in an accesible web server
+7.  Use your vector tiles layer
+..1 MMT example
+..2 Open Layers 3 Example
 
 
 ##License
