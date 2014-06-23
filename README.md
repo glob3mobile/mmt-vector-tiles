@@ -21,8 +21,9 @@ MMT-Vector-Tiles
 5. Run the process
 6. Copy your pyramid in an accesible web server
 7. Use your vector tiles layer
---*<a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/mmt-layer.java">MMT example </a>
-*<a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/index.html"> Open Layers 3 Example  </a>
+
+-<a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/mmt-layer.java">MMT example </a>
+-<a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/index.html"> Open Layers 3 Example  </a>
 
 
 ##License
@@ -49,8 +50,7 @@ Resultant data are structured in foders as follows:
 - A root folder shall be created for all the data sources, with a merged name like: tables_names+levels+projection.
 - A folder shall be created for any level named with level number.
 - At any level, a folder shall be created for any column named with column number.
-- The files generated shall be named according the format: row.geojson (row.geobson)
-
+- The files generated shall be named according the format: row.geojson (row.geobson).
 - Non file shall be generated for empty tiles.
 
 
@@ -64,19 +64,20 @@ Resultant data are structured in foders as follows:
 - postgis: 1.5 or superior
 - pgAdmin: 1.18 or superior
 
-
--------------------------------------------------------------------------------
-USER PARAMETERS:
+##User parameters
+================
 
 The script: run.sh assume the use of one parameter: configFileName.xml, that shall be provided in the command line.
 
-TEMPLATE:
+###Template
+
 ./run.sh parameters.xml
 
+###Configuration file
 This configuration file will include the following parameters (as tags in XML format) for the correct operation of the tool.
 
-//========================================================================================
-** Postgis database parameters:
+================
+####Postgis database parameters:
 
 - host: (String) Url address for postgis database host access.
 - port: (String) Port number for postgis database access.
@@ -84,8 +85,8 @@ This configuration file will include the following parameters (as tags in XML fo
 - password: (String) User password for postgis database access.
 - database_name: (String) Name of the accessed postgis database.
 
-//========================================================================================
-** LOD parameters:
+
+####LOD parameters:
 
 - mercator: (boolean) Projection selection. true=MERCATOR (epsg:900913 Google) / false=WGS84 (epsg:4326). Used to select the kind of tiles pyramid to be generated.
 - first_level: first level of tiles to be generated.
@@ -95,8 +96,7 @@ This configuration file will include the following parameters (as tags in XML fo
 - max_vertex: maximum number of vertex in a geojson/geobson file. If number of vertex obtained is over this limit, a optimization/filtering process shall be launched.
 - replace_filtered: Geometry replacement allowed or not. (MULTI)LINE or (MULTI)POLYGON filtered during processing will be replaced by POINT in the output file. REPLACE_FILTERED == 0, means substitutions not allowed. REPLACE_FILTERED > 0, this number is the maximun number of substitutions per tile.
 
-//========================================================================================
-** Parameters for specific vectorial data:
+####Parameters for specific vectorial data:
 
 For any data source, the configuration file will include a tag with the followind data:
 
@@ -108,8 +108,9 @@ For any data source, the configuration file will include a tag with the followin
 - properties: list of fields/columns associated to the vectorial data that shall be included as feature properties in the resultant geojson/geobson file.
 
 
--------------------------------------------------------------------------------
-EXAMPLES OF USE:
+
+##Examples
+==========
 
 Execution using parameters.xml default file, simply run the script:
 ./run.sh
