@@ -21,8 +21,8 @@ MMT-Vector-Tiles
 5. Run the proccess
 6. Copy your pyramid in an accesible web server
 7.  Use your vector tiles layer
-⋅⋅1  <a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/mmt-layer.java">MMT example </a>
-⋅⋅2 <a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/index.html"> Open Layers 3 Example  </a>
+⋅⋅1. <a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/mmt-layer.java">MMT example </a>
+⋅⋅2. <a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/index.html"> Open Layers 3 Example  </a>
 
 
 ##License
