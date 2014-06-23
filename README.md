@@ -10,7 +10,9 @@ mmt-vector-tiles
 + Currently the origin data source is **PostGIS**, where you can import **any vectorial datasets** using developments like  <a href="http://www.qgis.org/">qgis</a>,<a href="http://wiki.openstreetmap.org/wiki/Osm2pgsql">Osm2pgsql</a>,<a href="http://www.gvsig.org/">gvSIG</a>, <a href="http://udig.refractions.net/">Udig</a>,<a href="hhttp://www.gdal.org/">OGR-GDAL</a>, etc...
 + The library is a Java process that could be launched in any OS using the JVM
 
-![Architechture] (http://www.dropbox.com/s/gihng3rigcellrp/mmt-vector-tiles.jpg)
+![Architechture] (https://dl.dropboxusercontent.com/u/20446978/wiki-github/mmt-vector-tiles.jpg)
+
+
 
 
 License
