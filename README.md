@@ -15,22 +15,15 @@ MMT-Vector-Tiles
 ##Workflow
 =======
 1. Download the most recent release of MMT (Release)
-2. Install a Java Virtual Machine (if you don't have the JVM installed on your computer) 
+2. Install a <a href="http://www.java.com">Java Virtual Machine</a> (if you don't have the JVM installed on your computer) 
 3. Import your vectorial datasources to postgis.
-4. Configure the parameters.xml file
-5. Run the proccess
+4. Configure the <a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/vector-tiles/parameters.xml">MMT parameters.xml</a> file
+5. Run the process
 6. Copy your pyramid in an accesible web server
 7. Use your vector tiles layer
-⋅⋅⋅⋅⋅⋅1. <a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/mmt-layer.java">MMT example </a>
-⋅⋅⋅⋅⋅⋅2. <a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/index.html"> Open Layers 3 Example  </a>
+*<a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/mmt-layer.java">MMT example </a>
+*<a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/index.html"> Open Layers 3 Example  </a>
 
-
-1. First ordered list item
-2. Another item
-⋅⋅* Unordered sub-list. 
-1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
 
 ##License
 =======
