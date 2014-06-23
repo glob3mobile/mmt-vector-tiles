@@ -20,10 +20,17 @@ MMT-Vector-Tiles
 4. Configure the parameters.xml file
 5. Run the proccess
 6. Copy your pyramid in an accesible web server
-7.  Use your vector tiles layer
-⋅⋅1. <a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/mmt-layer.java">MMT example </a>
-⋅⋅2. <a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/index.html"> Open Layers 3 Example  </a>
+7. Use your vector tiles layer
+⋅⋅⋅⋅⋅⋅1. <a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/mmt-layer.java">MMT example </a>
+⋅⋅⋅⋅⋅⋅2. <a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/index.html"> Open Layers 3 Example  </a>
 
+
+1. First ordered list item
+2. Another item
+⋅⋅* Unordered sub-list. 
+1. Actual numbers don't matter, just that it's a number
+⋅⋅1. Ordered sub-list
+4. And another item.
 
 ##License
 =======
