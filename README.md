@@ -1,8 +1,8 @@
 mmt-vector-tiles
 ================
 
-##A Tile-raster library.
-
+##A Tile-Vector library.
+-------------------------------------------------------------------------------
 This library allows to create standard GeoJSON libraries using open source libraries that could be used to render huge vectorial data set in the same way than the raster pyramids.
 
 
