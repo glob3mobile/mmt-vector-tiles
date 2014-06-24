@@ -42,7 +42,7 @@ The selection of the target data, number of levels, projection type, and other c
 If the configuration file provided as parameter in the command line exits, the tool try to initialize from it, otherwise try to initialize from default configuration file: parameters.xml (if exits).
 
 So, the tool include three basic components:
-  - a runnable jar (vectorialLOD.jar) 
+  - a runnable jar (mmtVectorTiles.jar) 
   - a configuration file (parameters.xml), including all the parameters required.
   - a script (run.sh), for launching the application.
 
