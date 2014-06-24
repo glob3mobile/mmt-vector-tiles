@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="http://ol3js.org/en/master/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="http://ol3js.org/en/master/resources/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="http://ol3js.org/en/master/resources/layout.css" type="text/css">
+    <link rel="stylesheet" href="http://ol3js.org/en/master/resources/bootstrap/css/bootstrap-responsive.min.css" type="text/css">
+    <script src="http://ol3js.org/en/master/examples/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ol3js.org/en/master/build/ol.js" type="text/javascript"></script>
+    <script src="http://ol3js.org/en/master/resources/example-behaviour.js" type="text/javascript"></script>
+    <title>Tile vector example</title>
+  </head>
+    
+   
+    
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div >
+        <div >
+          <a href="./"><img src="http://ol3js.org/en/master/resources/logo.png"> <img heigth="12px" src="http://www.glob3mobile.com/wp-content/themes/glob3mobile/images/logo_s.png"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MMT Vector Tiles on Open Layers 3</a>
+        </div>
+      </div>
+    </div>
+
+ 
+
+     
+          <div id="map" class="map" style="background: white; height:100%;padding:0px;margin:0px;"></div>
+ 
+  
+    <script> 
+
+        
+ var lux_buildings = new ol.layer.Vector({   
+          source: new ol.source.TileVector({
+               format: new ol.format.GeoJSON({defaultProjection: 'EPSG:4326'
+    }),projection: 'EPSG:3857',
+    tileGrid: new ol.tilegrid.XYZ({
+      maxZoom: 18
+    }), url: 'http://igosoftware.dyndns.org:8000/vectorial/lux_buildings_LEVELS_12-18_MERCATOR/GEOJSON/{z}/{x}/{y}.geojson'
+  }),
+  style:function(feature, resolution) {
+      
+      var styleArray = new Array();
+      
+       var type = feature.get("type");
+   
+        if(type == "public_building" || type == "public" ){
+           styleArray.push(new ol.style.Style({
+                zIndex: 100,
+                stroke: new ol.style.Stroke({
+                  color: 'rgba(246, 99, 79, 1.0)',
+                  width: 1
+                }),
+                fill: new ol.style.Fill({
+                  color: 'rgba(246, 99, 79, 0.3)'
+                })
+              }))
+        }else if(type == "industrial" ){
+           styleArray.push(new ol.style.Style({
+                zIndex: 100,
+                stroke: new ol.style.Stroke({
+                  color: 'rgba(246, 246, 79, 1.0)',
+                  width: 1
+                }),
+                fill: new ol.style.Fill({
+                  color: 'rgba(246, 246, 79, 0.3)'
+                })
+              }))
+        }else{
+          styleArray.push(new ol.style.Style({
+                zIndex: 100,
+                stroke: new ol.style.Stroke({
+                  color: 'rgba(124, 200, 200, 1.0)',
+                  width: 1
+                }),
+                fill: new ol.style.Fill({
+                  color: 'rgba(124, 200, 200, 0.3)'
+                })
+              }))  
+            
+        }
+      return styleArray;
+        }
+    });
+        
+        
+var lux_roads = new ol.layer.Vector({   
+    source: new ol.source.TileVector({
+    format: new ol.format.GeoJSON({defaultProjection: 'EPSG:4326'
+    }),projection: 'EPSG:3857',
+    tileGrid: new ol.tilegrid.XYZ({
+      maxZoom: 18
+    }), url: 'http://igosoftware.dyndns.org:8000/vectorial/lux_roads_LEVELS_1-18_MERCATOR/GEOJSON/{z}/{x}/{y}.geojson'
+  }),
+  style:function(feature, resolution) {
+       var styleArray = new Array();
+      
+       var type = feature.get("type");
+      
+        if(type == "primary" ){
+            
+            styleArray.push(
+             new ol.style.Style({
+    fill: new ol.style.Fill({
+      color: 'rgba(234,175,0,0.6)'
+    }),stroke: new ol.style.Stroke({
+            color: '#11296f',
+            width: 3})
+        })   
+            )
+            
+        }
+      
+            if(type == "secondary" ){
+            
+            styleArray.push(
+             new ol.style.Style({
+    fill: new ol.style.Fill({
+      color: 'rgba(234,175,0,0.6)'
+    }),stroke: new ol.style.Stroke({
+            color: '#11296f',
+            width: 2})
+        })   
+            )
+            
+        }
+      if(type == "terciary" ){
+            
+            styleArray.push(
+             new ol.style.Style({
+    fill: new ol.style.Fill({
+      color: 'rgba(234,175,0,0.6)'
+    }),stroke: new ol.style.Stroke({
+            color: '#11296f',
+            width: 1})
+        })   
+            )
+            
+        }
+       if(type == "motorway" || type == "motorway_link" ){
+           
+            styleArray.push(
+             new ol.style.Style({
+    fill: new ol.style.Fill({
+      color: 'rgba(234,175,0,0.6)'
+    }),stroke: new ol.style.Stroke({
+            color: '#4595cc',
+            width: 9})
+        })   
+            )
+           
+       }
+      
+       if(type == "track" || type == "footway" ){
+           
+            styleArray.push(
+             new ol.style.Style({
+    fill: new ol.style.Fill({
+      color: 'rgba(234,175,0,0.6)',
+        width: 1
+    }),stroke: new ol.style.Stroke({
+            color: '#ee7911',
+            width: 1})
+        })   
+            )
+           
+       }
+      
+       return styleArray;
+  }
+    });
+
+
+   
+var lux_places = new ol.layer.Vector({   
+          source: new ol.source.TileVector({
+               format: new ol.format.GeoJSON({defaultProjection: 'EPSG:4326'
+    }),projection: 'EPSG:3857',
+    tileGrid: new ol.tilegrid.XYZ({
+      maxZoom: 18
+    }), url: 'http://igosoftware.dyndns.org:8000/vectorial/lux_places_LEVELS_1-18_MERCATOR/GEOJSON/{z}/{x}/{y}.geojson'
+  }),
+    style:function(feature, resolution) {
+        
+        var styleArray = new Array();
+    
+        styleArray.push(
+      new ol.style.Style({
+  image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+    anchor: [0.25, 23],
+    anchorXUnits: 'fraction',
+    anchorYUnits: 'pixels',
+    opacity: 1,
+    scale: 0.5,
+    src: 'http://www.glob3mobile.com/wp-content/themes/glob3mobile/images/logo_s.png'
+  }))
+})
+        )
+        
+        
+        return styleArray;
+    }
+})     
+        
+
+        
+      
+var aerialBing = new ol.layer.Tile({
+    source: new ol.source.BingMaps({
+    key: 'Ak-dzM4wZjSqTlzveKz5u0d4IQ4bRzVI309GxmkgSVr1ewS6iPSrOvOKhA-CJlm3',
+    imagerySet : 'Aerial'
+  })
+});
+            
+
+
+var map = new ol.Map({
+  layers: [aerialBing,lux_roads,lux_buildings,lux_places],
+  renderer: 'canvas',
+  target: document.getElementById('map'),
+  view: new ol.View2D({
+    center: ol.proj.transform([6.139, 49.611], 'EPSG:4326', 'EPSG:3857'),
+    minZoom: 12,  
+    maxZoom: 18,
+    zoom: 15
+  })
+});
+    </script>
+
+  </body>
+</html>
