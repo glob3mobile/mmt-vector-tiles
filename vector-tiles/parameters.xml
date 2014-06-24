@@ -6,21 +6,19 @@
 <!-- Postgis database parameters -->  
 
    <!-- Url address for postgis database host access -->
-   <host>192.168.1.14</host>
-   <!-- <host>igosoftware.dyndns.org</host> -->
+   <host>your_host</host>
    
    <!-- Port number for postgis database access -->
-   <port>5432</port>
-   <!-- <port>5414</port> -->
+   <port>your_port</port>
    
    <!-- User name for postgis database access -->
-   <user>postgres</user>
+   <user>your_user</user>
    
    <!-- User password for postgis database access -->
-   <password>postgres1g0</password>
+   <password>your_password</password>
    
    <!-- Name of the accessed postgis database -->
-   <database_name>vectorial_test</database_name>
+   <database_name>your_database</database_name>
 
 
 <!-- =================================================================================================== --> 
@@ -33,7 +31,7 @@
    <first_level>5</first_level>
    
    <!-- last level of tiles to be generated -->
-   <max_level>5</max_level>
+   <max_level>7</max_level>
    
    <!-- valid output format: geojson, geobson, both -->
    <output_format>both</output_format>
@@ -43,16 +41,20 @@
    <output_folder>/home/fpulido/Escritorio/LOD</output_folder>
    
    <!-- maximum number of vertex in a geojson/geobson file -->
-   <max_vertex>10000</max_vertex>
+   <max_vertex>5000</max_vertex>
    
    <!-- Geometry replacement allowed or not. -->
    <!-- (MULTI)LINE or (MULTI)POLYGON filtered during processing will be replaced by POINT. -->
    <!-- REPLACE_FILTERED == 0, means substitutions not allowed.  -->
    <!-- REPLACE_FILTERED > 0, this number is the maximun number of substitutions per tile -->
    <replace_filtered>20</replace_filtered>
+	
+   <!-- percentage (%) of overlapping for neighbor tiles -->
+   <!-- use 0% for generation of tiles for open layers -->
+   <overlap_percentage>5.0</overlap_percentage>
    
    <!-- maximum number of attemps to reduce the number of vertex in a file -->
-   <!-- <entry key="MAX_TUNNING_ATTEMPS">10</entry> -->
+   <!-- <max_tunning_attemps>10</max_tunning_attemps> -->
    
 
 <!-- =================================================================================================== --> 
