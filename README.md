@@ -5,7 +5,7 @@ MMT-Vector-Tiles
 ================
 + This library allows to **create** standard **GeoJSON vector tiles pyramids** using **open source libraries** that could be used to render **huge vectorial data sets** in the same way than raster pyramids.
 + Mobile Map Technology has direct support for this pyramids (MMT-VL working on MMT). 
-+ Open Layers 3 also support the pyramids (MMT-VL working on OL3)
++ Open Layers 3 also support the pyramids <a href="http://dl.dropboxusercontent.com/u/20446978/raster-tiles-example/index_lux.html"> MMT-VL working on OL3 </a>
 + The pyramid is a **static files dataset** that can be used on **any webserver** (Apache, nginx, ...) or can be diseminated in a CDN.
 + Currently the origin data source is **PostGIS**, where you can import **any vectorial datasets** using developments like  <a href="http://www.qgis.org/">qgis</a>,<a href="http://wiki.openstreetmap.org/wiki/Osm2pgsql">Osm2pgsql</a>,<a href="http://www.gvsig.org/">gvSIG</a>, <a href="http://udig.refractions.net/">Udig</a>,<a href="hhttp://www.gdal.org/">OGR-GDAL</a>, etc...
 + The library is a Java process that could be launched in any OS using the JVM
@@ -23,7 +23,7 @@ MMT-Vector-Tiles
 7. Use your vector tiles layer
 
 -<a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/mmt-layer.java">MMT example </a>
--<a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/index.html"> Open Layers 3 Example  </a>
+-<a href="http://dl.dropboxusercontent.com/u/20446978/raster-tiles-example/index_lux.html"> Open Layers 3 Example  </a>
 
 
 ##License
