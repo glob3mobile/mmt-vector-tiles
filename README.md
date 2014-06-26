@@ -25,7 +25,7 @@ MMT-Vector-Tiles
 -<a href="https://github.com/glob3mobile/mmt-vector-tiles/blob/master/example/mmt-layer.java">MMT example </a>
 -<a href="http://dl.dropboxusercontent.com/u/20446978/raster-tiles-example/index_lux.html"> Open Layers 3 Example  </a>
 
- (*) Note: Performance reasons makes absolutely necessary the creation of a spatial index in the postgis data source table, either during the import data process or after it. Use the 'gist' (Generalized Search Tree) function for this purpose. i.e. CREATE INDEX italy_buildings_geom_index ON italy_buildings USING gist(the_geom);
+ (*) Note: Performance reasons makes absolutely necessary the creation of a spatial index in the postgis data source tables, either during the import data process or after it. Use the 'gist' (Generalized Search Tree) function for this purpose. i.e. CREATE INDEX italy_buildings_geom_index ON italy_buildings USING gist(the_geom);
 
 ##License
 =======
