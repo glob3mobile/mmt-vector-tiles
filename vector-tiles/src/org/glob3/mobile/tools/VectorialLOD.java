@@ -56,30 +56,30 @@ public class VectorialLOD {
 
    //-- Internal constants definition ------------------------------------------------------------------
 
-   final static String  DEFAULT_PARAMETERS_FILE       = "parameters.xml";
-   final static String  METADATA_FILENAME             = "metadata.json";
-   final static String  EMPTY_GEOJSON                 = "{\"type\":\"FeatureCollection\",\"features\":null}";
-   final static String  INTERNAL_SRID                 = "4326";
-   final static String  MERCATOR_PYRAMID              = "MERCATOR";
-   final static String  WGS84_PYRAMID                 = "WGS84";
-   final static String  FILTERED_TYPE_LABEL           = "lodType";
+   final static String  DEFAULT_PARAMETERS_FILE  = "parameters.xml";
+   final static String  METADATA_FILENAME        = "metadata.json";
+   final static String  EMPTY_GEOJSON            = "{\"type\":\"FeatureCollection\",\"features\":null}";
+   final static String  INTERNAL_SRID            = "4326";
+   final static String  MERCATOR_PYRAMID         = "MERCATOR";
+   final static String  WGS84_PYRAMID            = "WGS84";
+   final static String  FILTERED_TYPE_LABEL      = "lodType";
 
-   final static int     CONNECTIONS_SCALE_FACTOR      = 2;
-   final static float   QUALITY_FACTOR                = 1.0f;
+   final static int     CONNECTIONS_SCALE_FACTOR = 2;
+   final static float   QUALITY_FACTOR           = 1.0f;
    //final static double  OVERLAP_PERCENTAGE            = 5.0;
-   final static int     CONNECTION_TIMEOUT            = 5;                                                   //seconds
-   final static int     PIXELS_PER_TILE               = 256;
+   final static int     CONNECTION_TIMEOUT       = 5;                                                   //seconds
+   final static int     PIXELS_PER_TILE          = 256;
    //   final static int     SQUARED_PIXELS_PER_TILE       = (int) Math.pow(
    //                                                               (PIXELS_PER_TILE + (PIXELS_PER_TILE * ((2 * OVERLAP_PERCENTAGE) / 100))),
    //                                                               2);
 
-   final static int     INITIAL_AREA_FACTOR           = 3;
-   final static int     MAX_TUNNING_ATTEMPS           = 10;
-   final static int     AREA_STEP                     = 1;
-   final static float   QF_STEP                       = 2.0f;
-   final static double  EMPTY_TILES_CORRECTION_FACTOR = 1.0;                                                 // 1.0 = assume worst case: 100% of tiles contains data
+   //   final static int     MAX_TUNNING_ATTEMPS      = 10;
+   final static int     INITIAL_AREA_FACTOR      = 3;
+   final static int     AREA_STEP                = 1;
+   final static float   QF_STEP                  = 2.0f;
+   //final static double  EMPTY_TILES_CORRECTION_FACTOR = 1.0;                                                 // 1.0 = assume worst case: 100% of tiles contains data
 
-   final static boolean VERBOSE                       = false;
+   final static boolean VERBOSE                  = false;
 
    private enum GeomType {
       POINT,
@@ -1100,7 +1100,7 @@ public class VectorialLOD {
       final String folderName = baseFolder + File.separatorChar + sector._level;
       if (!new File(folderName).exists()) {
          new File(folderName).mkdir();
-         //TODO: -- provisional: left commented while we generate empty tiles. Uncomment later --
+         //TODO: -- provisional: left commented while we generate empty tiles. Uncomment after --
          //         if (sector._level <= _firstLevelCreated) {
          //            _firstLevelCreated = sector._level;
          //         }
@@ -1367,7 +1367,7 @@ public class VectorialLOD {
          return;
       }
 
-      //TODO: -- provisional: dejarlo aqui mientras generemos tiles vacios. Quitar luego --
+      //TODO: -- provisional: left at this point while we generate empty tiles. Remove after --
       if (!_globalBoundSector.intersects(sector)) {
          return;
       }
@@ -1381,22 +1381,23 @@ public class VectorialLOD {
          int af = INITIAL_AREA_FACTOR;
          float qf = QUALITY_FACTOR;
          long numVertex = 0;
-         int numAttemps = 0;
+         long numVertexBefore = 0;
+         //int numAttemps = 0;
          boolean optimizeArea = true;
-         boolean outLimit = true;
+         boolean overLimit = true;
 
          do {
             geoJsonResult = null;
             filteredResult = null;
             containsData = false;
 
-            if (numAttemps > 0) {
-               ILogger.instance().logWarning("Too much vertex (" + numVertex + ") for sector: " + sector.label());
-            }
+            //            if (numAttemps > 0) {
+            //               ILogger.instance().logWarning("Too much vertex (" + numVertex + ") for sector: " + sector.label());
+            //            }
 
             for (final DataSource ds : dataSources) {
 
-               //TODO: -- provisional: dejarlo comentado mientras generemos tiles vacios. Descomentar luego --
+               //TODO: -- provisional: left commented while we generate empty tiles. Uncomment after --
                //            if (!ds._boundSector.intersects(sector)) {
                //               continue;
                //            }
@@ -1421,11 +1422,13 @@ public class VectorialLOD {
                numVertex = getGeomVertexCount(geoJsonResult);
             }
 
-            if ((numVertex <= MAX_VERTEX)) {
+            if ((numVertex <= MAX_VERTEX) || (numVertex >= numVertexBefore)) {
                //System.out.println("numAttemps: " + numAttemps);
-               outLimit = false;
+               overLimit = false;
             }
             else {
+               ILogger.instance().logWarning("Too much vertex (" + numVertex + ") for sector: " + sector.label());
+
                //to force alternative optimization. first attemp, try area; second attempt try quality factor
                if (optimizeArea) {
                   // first attempt: increase area filter factor
@@ -1435,11 +1438,14 @@ public class VectorialLOD {
                   // second attempt: reduce quality factor
                   qf = qf / QF_STEP;
                }
-               numAttemps++;
+
+               //numAttemps++;
+               numVertexBefore = numVertex;
                optimizeArea = !optimizeArea;
             }
          }
-         while ((outLimit) && (numAttemps < MAX_TUNNING_ATTEMPS));
+         while (overLimit);
+         //while ((overLimit) && (numAttemps < MAX_TUNNING_ATTEMPS));
 
          if (!isEmptyString(geoJsonResult)) {
             geoJsonResult = addFeatureToExistingGeojson(geoJsonResult, filteredResult);
@@ -1515,7 +1521,7 @@ public class VectorialLOD {
       progress.finish();
 
       //-- correct the result based on a estimation of empty tiles
-      _progressCounter.set((long) (_progressCounter.get() * EMPTY_TILES_CORRECTION_FACTOR));
+      //_progressCounter.set((long) (_progressCounter.get() * EMPTY_TILES_CORRECTION_FACTOR));
       System.out.println("Number of tiles to process estimation: " + _progressCounter.get());
 
       //restart concurrent service for later processing
@@ -1783,7 +1789,7 @@ public class VectorialLOD {
                                        final TileSector sector) {
 
       try {
-         //TODO: -- provisional: dejarlo aqui mientras generemos tiles vacios. Quitar luego --
+         //TODO: -- provisional: left at this point while we generate empty tiles. Remove after --
          if (sector._level < _firstLevelCreated) {
             _firstLevelCreated = sector._level;
          }
