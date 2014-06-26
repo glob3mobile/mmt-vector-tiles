@@ -27,6 +27,13 @@ MMT-Vector-Tiles
 
  (*) Note: Performance reasons makes absolutely necessary the creation of a spatial index in the postgis data source tables, either during the import data process or after it. Use the 'gist' (Generalized Search Tree) function for this purpose. i.e. CREATE INDEX italy_buildings_geom_index ON italy_buildings USING gist(the_geom);
 
+##Screenshots
+=====
+
+![Buildings of Scotland OL3] (https://www.dropbox.com/s/d45lmwdav487m5q/Captura%20de%20pantalla%202014-06-26%2010.08.53.png)
+
+![Some layers Luxemburg OSM OL3] (https://www.dropbox.com/s/nm8auuy3mkpz4ih/Captura%20de%20pantalla%202014-06-26%2010.11.53.png)
+
 ##License
 =======
 MMT Vector-tiles is released under a 2 [clauses BSD license](https://github.com/glob3mobile/g3m/blob/purgatory/LICENSE.txt) Except for the Blender plugin exporter which is available under the GPL 2.0 License.:
