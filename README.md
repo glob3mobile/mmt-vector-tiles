@@ -5,7 +5,7 @@ MMT-Vector-Tiles
 ================
 + This library allows to **create** standard **GeoJSON vector tiles pyramids** using **open source libraries** that could be used to render **huge vectorial data sets** in the same way than raster pyramids.
 + Mobile Map Technology has direct support for this pyramids (MMT-VL working on MMT). 
-+ Open Layers 3 also support the pyramids &nbsp;&nbsp;  <a href="http://dl.dropboxusercontent.com/u/20446978/raster-tiles-example/index_lux.html"> MMT-VL working on OL3 </a>
++ Open Layers 3 also support the pyramids &nbsp;&nbsp;  <a href="http://dl.dropboxusercontent.com/u/20446978/raster-tiles-example/index_lux.html"> MMT-VL working on OL3 </a>, <a href="http://dl.dropboxusercontent.com/u/20446978/raster-tiles-example/index_scotland.html">All buildings of Scotland Open Street Map- levels 1-17 </a>
 + The pyramid is a **static files dataset** that can be used on **any webserver** (Apache, nginx, ...) or can be diseminated in a CDN.
 + Currently the origin data source is **PostGIS**, where you can import **any vectorial datasets** using developments like  <a href="http://www.qgis.org/">qgis</a>,<a href="http://wiki.openstreetmap.org/wiki/Osm2pgsql">Osm2pgsql</a>,<a href="http://www.gvsig.org/">gvSIG</a>, <a href="http://udig.refractions.net/">Udig</a>,<a href="hhttp://www.gdal.org/">OGR-GDAL</a>, etc...
 + The library is a Java process that could be launched in any OS using the JVM
@@ -26,6 +26,13 @@ MMT-Vector-Tiles
 -<a href="http://dl.dropboxusercontent.com/u/20446978/raster-tiles-example/index_lux.html"> Open Layers 3 Example  </a>
 
  (*) Note: Performance reasons makes absolutely necessary the creation of a spatial index in the postgis data source tables, either during the import data process or after it. Use the 'gist' (Generalized Search Tree) function for this purpose. i.e. CREATE INDEX italy_buildings_geom_index ON italy_buildings USING gist(the_geom);
+
+##Screenshots
+=====
+
+![Buildings of Scotland OL3] (https://dl.dropboxusercontent.com/u/20446978/wiki-github/Captura%20de%20pantalla%202014-06-26%2010.08.53.png)
+
+![Some layers Luxemburg OSM OL3] (https://dl.dropboxusercontent.com/u/20446978/wiki-github/Captura%20de%20pantalla%202014-06-26%2010.11.53.png)
 
 ##License
 =======
