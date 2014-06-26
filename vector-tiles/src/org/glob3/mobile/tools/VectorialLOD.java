@@ -62,6 +62,7 @@ public class VectorialLOD {
    final static String  INTERNAL_SRID                 = "4326";
    final static String  MERCATOR_PYRAMID              = "MERCATOR";
    final static String  WGS84_PYRAMID                 = "WGS84";
+   final static String  FILTERED_TYPE_LABEL           = "lodType";
 
    final static int     CONNECTIONS_SCALE_FACTOR      = 2;
    final static float   QUALITY_FACTOR                = 1.0f;
@@ -105,7 +106,7 @@ public class VectorialLOD {
    private static int                        MAX_DB_CONNECTIONS       = 2;
    private static String                     OUTPUT_FORMAT            = "geojson";                                                                       // valid values: geojson, geobson, both
    private static String                     ROOT_FOLDER              = "LOD";
-   private static long                       MAX_VERTEX               = 10000;
+   private static long                       MAX_VERTEX               = 5000;
    private static int                        REPLACE_FILTERED         = 20;
    private static double                     OVERLAP_PERCENTAGE       = 5.0;                                                                             // default value
    private static float                      PIXELS_PER_EXTENDED_TILE = (float) (PIXELS_PER_TILE + (PIXELS_PER_TILE * ((2 * OVERLAP_PERCENTAGE) / 100)));
@@ -376,7 +377,7 @@ public class VectorialLOD {
       if (filteredQuery != null) {
          filteredResult = executeQuery(filteredQuery, conn);
          if (!isEmptyString(filteredResult)) {
-            filteredResult = addPropertyToExistingGeojson(filteredResult, "lodType", lodProperty);
+            filteredResult = addPropertyToExistingGeojson(filteredResult, FILTERED_TYPE_LABEL, lodProperty);
             //System.out.println("filteredResult: " + filteredResult);
          }
       }
