@@ -30,9 +30,9 @@ MMT-Vector-Tiles
 ##Screenshots
 =====
 
-![Buildings of Scotland OL3] (https://www.dropbox.com/s/d45lmwdav487m5q/Captura%20de%20pantalla%202014-06-26%2010.08.53.png)
+![Buildings of Scotland OL3] (https://dl.dropboxusercontent.com/u/20446978/wiki-github/Captura%20de%20pantalla%202014-06-26%2010.08.53.png)
 
-![Some layers Luxemburg OSM OL3] (https://www.dropbox.com/s/nm8auuy3mkpz4ih/Captura%20de%20pantalla%202014-06-26%2010.11.53.png)
+![Some layers Luxemburg OSM OL3] (https://dl.dropboxusercontent.com/u/20446978/wiki-github/Captura%20de%20pantalla%202014-06-26%2010.11.53.png)
 
 ##License
 =======
