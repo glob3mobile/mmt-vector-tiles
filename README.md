@@ -109,9 +109,8 @@ For any data source, the configuration file will include a tag with the followin
 
 ##Examples
 ==========
-Execution using parameters.xml default file, simply run the script:
-./run.sh
-Execution using a specific user configuration file: my_parameters.xml, run the script with the command line parameter:
-./run.sh my_parameters.xml
+- Execution using parameters.xml default file, simply run the script: ./run.sh
+- Execution using a specific user configuration file: my_parameters.xml, run the script with the command line parameter: 
+  ./run.sh my_parameters.xml
 
 
