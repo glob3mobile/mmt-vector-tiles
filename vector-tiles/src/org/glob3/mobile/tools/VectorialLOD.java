@@ -76,7 +76,7 @@ public class VectorialLOD {
    //   final static int     MAX_TUNNING_ATTEMPS      = 10;
    final static int     INITIAL_AREA_FACTOR      = 3;
    final static int     AREA_STEP                = 1;
-   final static float   QF_STEP                  = 2.0f;
+   final static float   QF_STEP                  = 4.0f;
    //final static double  EMPTY_TILES_CORRECTION_FACTOR = 1.0;                                                 // 1.0 = assume worst case: 100% of tiles contains data
 
    final static boolean VERBOSE                  = false;
@@ -1381,7 +1381,7 @@ public class VectorialLOD {
          int af = INITIAL_AREA_FACTOR;
          float qf = QUALITY_FACTOR;
          long numVertex = 0;
-         long numVertexBefore = 0;
+         long numVertexBefore = 1000000;
          //int numAttemps = 0;
          boolean optimizeArea = true;
          boolean overLimit = true;
