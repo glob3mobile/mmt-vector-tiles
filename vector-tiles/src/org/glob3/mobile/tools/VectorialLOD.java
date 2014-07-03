@@ -1023,6 +1023,51 @@ public class VectorialLOD {
    }
 
 
+   private static void verifyDatasourceProperties(final DataSource ds) {
+
+      if (ds._includeProperties == null) {
+         return;
+      }
+
+      Connection conn = null;
+      Statement st = null;
+      ResultSet rs = null;
+      try {
+         conn = _dataBaseService.getConnection();
+         for (final String prop : ds._includeProperties) {
+            if (prop != null) {
+
+               final String columnExitsQuery = "SELECT COUNT(*) FROM information_schema.columns WHERE table_name='"
+                                               + ds._sourceTable + "'" + " AND column_name='" + prop + "'";
+
+               st = conn.createStatement();
+               rs = st.executeQuery(columnExitsQuery);
+
+               if (!rs.next()) {
+                  ILogger.instance().logError("");
+                  System.err.println("Invalid column name: \"" + prop + "\" for the table: \"" + ds._sourceTable
+                                     + "\" at the parameters file: \"" + PARAMETERS_FILE + "\". Review values and try again.");
+                  System.exit(1);
+               }
+
+               final int columnCount = rs.getInt(1);
+
+               if (columnCount != 1) {
+                  ILogger.instance().logError("");
+                  System.err.println("Invalid column name: \"" + prop + "\" for the table: \"" + ds._sourceTable
+                                     + "\" at the parameters file: \"" + PARAMETERS_FILE + "\". Review values and try again.");
+                  System.exit(1);
+               }
+               st.close();
+            }
+         }
+      }
+      catch (final SQLException e) {
+         ILogger.instance().logError("SQL error verifying column existence for table: " + ds._sourceTable + ". " + e.getMessage());
+      }
+   }
+
+
    //   private static String getGeometriesSRID(final String dataSourceTable) {
    //
    //      //-- SELECT Find_SRID('public', 'tiger_us_state_2007', 'the_geom_4269')
@@ -1307,6 +1352,8 @@ public class VectorialLOD {
 
          final TileSector boundSector = getGeometriesBound(ds);
          ds.setBoundSector(boundSector);
+
+         verifyDatasourceProperties(ds);
       }
 
       _globalBoundSector = getGlobalBoundSector(dataSources);
@@ -1382,7 +1429,6 @@ public class VectorialLOD {
          float qf = QUALITY_FACTOR;
          long numVertex = 0;
          long numVertexBefore = 1000000;
-         //int numAttemps = 0;
          boolean optimizeArea = true;
          boolean overLimit = true;
 
@@ -1390,10 +1436,6 @@ public class VectorialLOD {
             geoJsonResult = null;
             filteredResult = null;
             containsData = false;
-
-            //            if (numAttemps > 0) {
-            //               ILogger.instance().logWarning("Too much vertex (" + numVertex + ") for sector: " + sector.label());
-            //            }
 
             for (final DataSource ds : dataSources) {
 
@@ -1439,7 +1481,6 @@ public class VectorialLOD {
                   qf = qf / QF_STEP;
                }
 
-               //numAttemps++;
                numVertexBefore = numVertex;
                optimizeArea = !optimizeArea;
             }
